@@ -8,7 +8,7 @@ import Editor from './editor'
 interface ContentProviderBaseProps {
   data: any
   standaloneServer: boolean
-  handleDomChange: () => void
+  handleDomChange?: (html: string) => void
 }
 
 interface dataType {
