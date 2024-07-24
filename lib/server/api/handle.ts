@@ -109,7 +109,7 @@ const handleData = async (req: NextApiRequest, res: NextApiResponse): Promise<vo
 }
 
 const getPackagePath = () => {
-  const pathCurrent = path.dirname(require.resolve('destack/package.json'))
+  const pathCurrent = path.dirname(require.resolve('destack-v2/package.json'))
   if (pathCurrent?.startsWith('(api)')) {
     return path.join(process.cwd() as string, '..', pathCurrent as string)
   } else {
