@@ -8,6 +8,7 @@ import Editor from './editor'
 interface ContentProviderBaseProps {
   data: any
   standaloneServer: boolean
+  handleDomChange: () => void
 }
 
 interface dataType {
@@ -15,7 +16,7 @@ interface dataType {
   name?: string
 }
 
-const ContentProvider: React.FC<ContentProviderBaseProps> = ({ data, standaloneServer }) => {
+const ContentProvider: React.FC<ContentProviderBaseProps> = ({ data, standaloneServer, handleDomChange }) => {
   const [templateData, setTemplateData] = useState<string | undefined>()
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const ContentProvider: React.FC<ContentProviderBaseProps> = ({ data, standaloneS
         <PoweredBy />
       </>
     )
-  else return <Editor standaloneServer={standaloneServer} />
+  else return <Editor standaloneServer={standaloneServer} handleDomChange={handleDomChange} />
 }
 export { ContentProvider }
 

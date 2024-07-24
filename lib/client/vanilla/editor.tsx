@@ -113,7 +113,7 @@ const Category: React.FC<CategoryProps> = ({ themeIndex, category, components, s
 
 type ComponentWithCategories = { [key: string]: Component[] }
 
-function Editor({ standaloneServer = false }) {
+function Editor({ standaloneServer = false, handleDomChange }) {
   const canvasRef = useRef<HTMLDivElement>(null)
 
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -180,7 +180,10 @@ function Editor({ standaloneServer = false }) {
         console.log('dom changed')
 
         const html = canvasRef.current!.innerHTML
-        if (html) savePage(html)
+        if (html){
+          savePage(html)
+          handleDomChange(html)
+        }
       }),
     )
     observer.observe(canvasRef.current!, config)
